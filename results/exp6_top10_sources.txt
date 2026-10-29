@@ -1,0 +1,280 @@
+### dist-packages/jsonschema/_utils.py:69 9897  score=0.985  cues: n_sig_params_unmentioned=1, n_doc_params_unmatched=1, return_yield_mismatch=1
+def find_additional_properties(instance, schema):
+    """
+    Return the set of additional properties for the given ``instance``.
+
+    Weeds out properties that should have been validated by ``properties`` and
+    / or ``patternProperties``.
+
+    Assumes ``instance`` is dict-like already.
+    """
+    properties = schema.get("properties", {})
+    patterns = "|".join(schema.get("patternProperties", {}))
+    for property in instance:
+        if property not in properties:
+            if patterns and re.search(patterns, property):
+                continue
+            yield property
+
+### dist-packages/pymdownx/highlight.py:157 15379  score=0.982  cues: return_yield_mismatch=1
+def _wrap_code(self, source):
+    """Return source, but do not wrap in inline <code> block."""
+
+    yield 0, ''
+    for i, t in source:
+        yield i, t.strip()
+    yield 0, ''
+
+### dist-packages/pathspec/pathspec.py:495 13561  score=0.981  cues: n_doc_params_unmatched=2, return_yield_mismatch=1, n_doc_exceptions_unmatched=1
+def match_tree_files(
+	self,
+	root: StrPath,
+	on_error: Optional[Callable[[OSError], None]] = None,
+	follow_links: Optional[bool] = None,
+	*,
+	negate: Optional[bool] = None,
+) -> Iterator[str]:
+	"""
+	Walks the specified root path for all files and matches them to this
+	path-spec.
+
+	*root* (:class:`str` or :class:`os.PathLike`) is the root directory to
+	search for files.
+
+	*on_error* (:class:`~collections.abc.Callable` or :data:`None`) optionally
+	is the error handler for file-system exceptions. It will be called with the
+	exception (:exc:`OSError`). Reraise the exception to abort the walk. Default
+	is :data:`None` to ignore file-system exceptions.
+
+	*follow_links* (:class:`bool` or :data:`None`) optionally is whether to walk
+	symbolic links that resolve to directories. Default is :data:`None` for
+	:data:`True`.
+
+	*negate* (:class:`bool` or :data:`None`) is whether to negate the match
+	results of the patterns. If :data:`True`, a pattern matching a file will
+	exclude the file rather than include it. Default is :data:`None` for
+	:data:`False`.
+
+	Returns the matched files (:class:`~collections.abc.Iterable` of :class:`str`).
+	"""
+	files = util.iter_tree_files(root, on_error=on_error, follow_links=follow_links)
+	yield from self.match_files(files, negate=negate)
+
+### dist-packages/pikepdf/_explicit_conv.py:18 13821  score=0.980  cues: n_sig_params_unmentioned=1, return_yield_mismatch=1
+def _thread_conversion_mode(explicit: bool):
+    """Push a thread-local conversion mode override and undo it on exit.
+
+    The push returns a token identifying the depth of the override stack before
+    the push; the pop truncates the stack back to that depth. Truncating rather
+    than popping means that context managers exited out of order cannot corrupt
+    the stack -- exiting an outer one discards the inner ones with it, and the
+    inner one's own exit then does nothing.
+    """
+    token = _core._push_thread_conversion_mode(explicit)
+    try:
+        yield
+    finally:
+        _core._pop_thread_conversion_mode(token)
+
+### dist-packages/pydantic/_internal/_generate_schema.py:2771 15193  score=0.980  cues: n_doc_params_unmatched=2, return_yield_mismatch=1
+def get_schema_or_ref(self, tp: Any, /) -> Generator[tuple[str, core_schema.DefinitionReferenceSchema | None]]:
+    """Get a definition for `tp` if one exists.
+
+    If a definition exists, a tuple of `(ref_string, CoreSchema)` is returned.
+    If no definition exists yet, a tuple of `(ref_string, None)` is returned.
+
+    Note that the returned `CoreSchema` will always be a `DefinitionReferenceSchema`,
+    not the actual definition itself.
+
+    This should be called for any type that can be identified by reference.
+    This includes any recursive types.
+
+    At present the following types can be named/recursive:
+
+    - Pydantic model
+    - Pydantic and stdlib dataclasses
+    - Typed dictionaries
+    - Named tuples
+    - `TypeAliasType` instances
+    - Enums
+    """
+    ref = get_type_ref(tp)
+    # return the reference if we're either (1) in a cycle or (2) it the reference was already encountered:
+    if ref in self._recursively_seen or ref in self._definitions:
+        yield (ref, core_schema.definition_reference_schema(ref))
+    else:
+        self._recursively_seen.add(ref)
+        try:
+            yield (ref, None)
+        finally:
+            self._recursively_seen.discard(ref)
+
+### unittest/case.py:538 20953  score=0.979  cues: n_sig_params_unmentioned=1, return_yield_mismatch=1, n_code_exceptions_undocumented=1
+def subTest(self, msg=_subtest_msg_sentinel, **params):
+    """Return a context manager that will return the enclosed block
+    of code in a subtest identified by the optional message and
+    keyword parameters.  A failure in the subtest marks the test
+    case as failed but resumes execution at the end of the enclosed
+    block, allowing further test code to be executed.
+    """
+    if self._outcome is None or not self._outcome.result_supports_subtests:
+        yield
+        return
+    parent = self._subtest
+    if parent is None:
+        params_map = _OrderedChainMap(params)
+    else:
+        params_map = parent.params.new_child(params)
+    self._subtest = _SubTest(self, msg, params_map)
+    try:
+        with self._outcome.testPartExecutor(self._subtest, subTest=True):
+            yield
+        if not self._outcome.success:
+            result = self._outcome.result
+            if result is not None and result.failfast:
+                raise _ShouldStop
+        elif self._outcome.expectedFailure:
+            # If the test is expecting a failure, we really want to
+            # stop now and register the expected failure.
+            raise _ShouldStop
+    finally:
+        self._subtest = parent
+
+### dist-packages/pip/_internal/index/collector.py:200 5436  score=0.978  cues: n_sig_params_unmentioned=1
+def with_cached_index_content(fn: ParseLinks) -> ParseLinks:
+    """
+    Given a function that parses an Iterable[Link] from an IndexContent, cache the
+    function's result (keyed by CacheablePageContent), unless the IndexContent
+    `page` has `page.cache_link_parsing == False`.
+    """
+
+    @functools.cache
+    def wrapper(cacheable_page: CacheablePageContent) -> list[Link]:
+        return list(fn(cacheable_page.page))
+
+    @functools.wraps(fn)
+    def wrapper_wrapper(page: IndexContent) -> list[Link]:
+        if page.cache_link_parsing:
+            return wrapper(CacheablePageContent(page))
+        return list(fn(page))
+
+    return wrapper_wrapper
+
+### dist-packages/tifffile/zarr.py:474 20330  score=0.978  cues: return_yield_mismatch=1
+async def list_dir(self, prefix: str) -> AsyncIterator[str]:
+    """Return all keys and prefixes with prefix.
+
+    Keys and prefixes do not contain the character "/" after the given
+    prefix.
+
+    """
+    prefix = prefix.rstrip('/')
+    if prefix == '':
+        keys_unique = {k.split('/')[0] for k in self._store}
+    else:
+        keys_unique = {
+            key.removeprefix(prefix + '/').split('/')[0]
+            for key in self._store
+            if key.startswith(prefix + '/') and key != prefix
+        }
+    for key in keys_unique:
+        yield key
+
+### dist-packages/docx/image/png.py:150 8050  score=0.977  cues: return_yield_mismatch=1
+def _iter_chunk_offsets(self):
+    """Generate a (chunk_type, chunk_offset) 2-tuple for each of the chunks in the
+    PNG image stream.
+
+    Iteration stops after the IEND chunk is returned.
+    """
+    chunk_offset = 8
+    while True:
+        chunk_data_len = self._stream_rdr.read_long(chunk_offset)
+        chunk_type = self._stream_rdr.read_str(4, chunk_offset, 4)
+        data_offset = chunk_offset + 8
+        yield chunk_type, data_offset
+        if chunk_type == "IEND":
+            break
+        # incr offset for chunk len long, chunk type, chunk data, and CRC
+        chunk_offset += 4 + 4 + chunk_data_len + 4
+
+### dist-packages/joblib/numpy_pickle_utils.py:131 9775  score=0.977  cues: return_yield_mismatch=1
+def _validate_fileobject_and_memmap(fileobj, filename, mmap_mode=None):
+    """Utility function opening the right fileobject from a filename.
+
+    The magic number is used to choose between the type of file object to open:
+    * regular file object (default)
+    * zlib file object
+    * gzip file object
+    * bz2 file object
+    * lzma file object (for xz and lzma compressor)
+
+    Parameters
+    ----------
+    fileobj: file object
+    filename: str
+        filename path corresponding to the fileobj parameter.
+    mmap_mode: str
+        memory map mode that should be used to open the pickle file. This
+        parameter is useful to verify that the user is not trying to one with
+        compression. Default: None.
+
+    Returns
+    -------
+        a tuple with a file like object, and the validated mmap_mode.
+
+    """
+    # Detect if the fileobj contains compressed data.
+    compressor = _detect_compressor(fileobj)
+    validated_mmap_mode = mmap_mode
+
+    if compressor == "compat":
+        # Compatibility with old pickle mode: simply return the input
+        # filename "as-is" and let the compatibility function be called by the
+        # caller.
+        warnings.warn(
+            "The file '%s' has been generated with a joblib "
+            "version less than 0.10. "
+            "Please regenerate this pickle file." % filename,
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        yield filename, validated_mmap_mode
+    else:
+        if compressor in _COMPRESSORS:
+            # based on the compressor detected in the file, we open the
+            # correct decompressor file object, wrapped in a buffer.
+            compressor_wrapper = _COMPRESSORS[compressor]
+            inst = compressor_wrapper.decompressor_file(fileobj)
+            fileobj = _buffered_read_file(inst)
+
+        # Checking if incompatible load parameters with the type of file:
+        # mmap_mode cannot be used with compressed file or in memory buffers
+        # such as io.BytesIO.
+        if mmap_mode is not None:
+            validated_mmap_mode = None
+            if isinstance(fileobj, io.BytesIO):
+                warnings.warn(
+                    "In memory persistence is not compatible with "
+                    'mmap_mode "%(mmap_mode)s" flag passed. '
+                    "mmap_mode option will be ignored." % locals(),
+                    stacklevel=2,
+                )
+            elif compressor != "not-compressed":
+                warnings.warn(
+                    'mmap_mode "%(mmap_mode)s" is not compatible '
+                    "with compressed file %(filename)s. "
+                    '"%(mmap_mode)s" flag will be ignored.' % locals(),
+                    stacklevel=2,
+                )
+            elif not _is_raw_file(fileobj):
+                warnings.warn(
+                    '"%(fileobj)r" is not a raw file, mmap_mode '
+                    '"%(mmap_mode)s" flag will be ignored.' % locals(),
+                    stacklevel=2,
+                )
+            else:
+                validated_mmap_mode = mmap_mode
+
+        yield fileobj, validated_mmap_mode
+

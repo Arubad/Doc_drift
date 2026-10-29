@@ -1,0 +1,45 @@
+[saved] results/exp5_coefficients.csv
+                      feature   coef
+4       frac_params_mentioned -0.627
+30            ret_wrapped_str  0.612
+29           ret_wrapped_list  0.588
+8              code_has_yield  0.537
+31          ret_wrapped_tuple  0.511
+9       return_yield_mismatch  0.385
+6       code_has_return_value -0.282
+18              ident_jaccard  0.281
+7          doc_mentions_yield -0.258
+11             code_has_raise  0.221
+19  ident_overlap_doc_in_code -0.172
+22                       n_if  0.146
+[saved] results/exp5_label_noise.csv
+detector    noise
+struct-GBM  0.0      0.806
+            0.1      0.804
+            0.2      0.801
+            0.3      0.794
+            0.4      0.774
+tfidf-LR    0.0      0.856
+            0.1      0.836
+            0.2      0.809
+            0.3      0.755
+            0.4      0.661
+Name: auroc, dtype: float64
+[saved] results/exp5_learning_curve.csv
+detector    n_functions
+struct-GBM  50             0.679
+            100            0.711
+            200            0.773
+            500            0.789
+            1000           0.794
+            2000           0.800
+            15212          0.806
+tfidf-LR    50             0.754
+            100            0.795
+            200            0.813
+            500            0.825
+            1000           0.834
+            2000           0.841
+            15212          0.856
+Name: auroc, dtype: float64
+done

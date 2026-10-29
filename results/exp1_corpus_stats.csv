@@ -1,0 +1,2 @@
+n_functions,n_projects,median_doc_words,median_code_lines,frac_mentions_all_params,frac_mentions_return,frac_mentions_raise,frac_has_numeric_default,frac_defaults_mentioned
+21732,146,32.0,23.0,0.6806552549236149,0.5060739922694644,0.09667771028897479,0.06524940180379164,0.032348610344192896

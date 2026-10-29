@@ -1,0 +1,24 @@
+[saved] results/exp6_wild_candidates.csv
+fraction of clean corpus scored > 0.5: 0.396
+                                                                 file                             name  lineno  drift_score                                                                                     cues
+9897                               dist-packages/jsonschema/_utils.py       find_additional_properties      69        0.985            n_sig_params_unmentioned=1, n_doc_params_unmatched=1, return_yield_mismatch=1
+15379                             dist-packages/pymdownx/highlight.py                       _wrap_code     157        0.982                                                                  return_yield_mismatch=1
+13561                              dist-packages/pathspec/pathspec.py                 match_tree_files     495        0.981          n_doc_params_unmatched=2, return_yield_mismatch=1, n_doc_exceptions_unmatched=1
+13821                         dist-packages/pikepdf/_explicit_conv.py          _thread_conversion_mode      18        0.980                                      n_sig_params_unmentioned=1, return_yield_mismatch=1
+15193            dist-packages/pydantic/_internal/_generate_schema.py                get_schema_or_ref    2771        0.980                                        n_doc_params_unmatched=2, return_yield_mismatch=1
+20953                                                unittest/case.py                          subTest     538        0.979    n_sig_params_unmentioned=1, return_yield_mismatch=1, n_code_exceptions_undocumented=1
+5436                   dist-packages/pip/_internal/index/collector.py        with_cached_index_content     200        0.978                                                               n_sig_params_unmentioned=1
+20330                                  dist-packages/tifffile/zarr.py                         list_dir     474        0.978                                                                  return_yield_mismatch=1
+8050                                  dist-packages/docx/image/png.py              _iter_chunk_offsets     150        0.977                                                                  return_yield_mismatch=1
+9775                       dist-packages/joblib/numpy_pickle_utils.py  _validate_fileobject_and_memmap     131        0.977                                                                  return_yield_mismatch=1
+5148                 dist-packages/openpyxl/comments/comment_sheet.py                         comments     174        0.977                                                                  return_yield_mismatch=1
+19962  dist-packages/sklearn/utils/_test_common/instance_generator.py             _construct_instances     807        0.977                                return_yield_mismatch=1, n_code_exceptions_undocumented=1
+2359                             dist-packages/matplotlib/__init__.py                       rc_context    1163        0.976                                        n_doc_params_unmatched=2, return_yield_mismatch=1
+12108   dist-packages/networkx/algorithms/coloring/greedy_coloring.py    strategy_connected_sequential     172        0.976                                return_yield_mismatch=1, n_code_exceptions_undocumented=1
+14130                           dist-packages/platformdirs/testing.py                    isolated_dirs      34        0.975                                        n_doc_params_unmatched=4, return_yield_mismatch=1
+5281                dist-packages/pip/_internal/network/lazy_wheel.py                            _stay     147        0.974                                                                  return_yield_mismatch=1
+19775                 dist-packages/sklearn/utils/estimator_checks.py            _generate_sparse_data    1022        0.974                                        n_doc_params_unmatched=1, return_yield_mismatch=1
+20589                   dist-packages/watchdog/observers/inotify_c.py              _parse_event_buffer     444        0.974            n_sig_params_unmentioned=1, n_doc_params_unmatched=2, return_yield_mismatch=1
+7186                       dist-packages/chardet/pipeline/validity.py               filter_by_validity      12        0.973                                                                                         
+13603                           dist-packages/pdf2image/generators.py                counter_generator      41        0.973  n_sig_params_unmentioned=1, return_yield_mismatch=1, n_doc_numbers_unmatched_defaults=1
+done

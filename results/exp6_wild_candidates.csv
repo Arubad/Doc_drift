@@ -1,0 +1,41 @@
+file,name,lineno,drift_score,cues
+dist-packages/jsonschema/_utils.py,find_additional_properties,69,0.9845901987590594,"n_sig_params_unmentioned=1, n_doc_params_unmatched=1, return_yield_mismatch=1"
+dist-packages/pymdownx/highlight.py,_wrap_code,157,0.9815325676900092,return_yield_mismatch=1
+dist-packages/pathspec/pathspec.py,match_tree_files,495,0.9807919214039813,"n_doc_params_unmatched=2, return_yield_mismatch=1, n_doc_exceptions_unmatched=1"
+dist-packages/pikepdf/_explicit_conv.py,_thread_conversion_mode,18,0.9798935780912829,"n_sig_params_unmentioned=1, return_yield_mismatch=1"
+dist-packages/pydantic/_internal/_generate_schema.py,get_schema_or_ref,2771,0.9795723788466321,"n_doc_params_unmatched=2, return_yield_mismatch=1"
+unittest/case.py,subTest,538,0.9789819896104884,"n_sig_params_unmentioned=1, return_yield_mismatch=1, n_code_exceptions_undocumented=1"
+dist-packages/pip/_internal/index/collector.py,with_cached_index_content,200,0.9776289136373474,n_sig_params_unmentioned=1
+dist-packages/tifffile/zarr.py,list_dir,474,0.9775881801047578,return_yield_mismatch=1
+dist-packages/docx/image/png.py,_iter_chunk_offsets,150,0.97712925112389,return_yield_mismatch=1
+dist-packages/joblib/numpy_pickle_utils.py,_validate_fileobject_and_memmap,131,0.9769634657568642,return_yield_mismatch=1
+dist-packages/openpyxl/comments/comment_sheet.py,comments,174,0.9766917701584299,return_yield_mismatch=1
+dist-packages/sklearn/utils/_test_common/instance_generator.py,_construct_instances,807,0.9765428504596059,"return_yield_mismatch=1, n_code_exceptions_undocumented=1"
+dist-packages/matplotlib/__init__.py,rc_context,1163,0.9763118963717755,"n_doc_params_unmatched=2, return_yield_mismatch=1"
+dist-packages/networkx/algorithms/coloring/greedy_coloring.py,strategy_connected_sequential,172,0.9762973378221532,"return_yield_mismatch=1, n_code_exceptions_undocumented=1"
+dist-packages/platformdirs/testing.py,isolated_dirs,34,0.9747153974952008,"n_doc_params_unmatched=4, return_yield_mismatch=1"
+dist-packages/pip/_internal/network/lazy_wheel.py,_stay,147,0.9743242369316817,return_yield_mismatch=1
+dist-packages/sklearn/utils/estimator_checks.py,_generate_sparse_data,1022,0.9741150371718306,"n_doc_params_unmatched=1, return_yield_mismatch=1"
+dist-packages/watchdog/observers/inotify_c.py,_parse_event_buffer,444,0.9738572536936974,"n_sig_params_unmentioned=1, n_doc_params_unmatched=2, return_yield_mismatch=1"
+dist-packages/chardet/pipeline/validity.py,filter_by_validity,12,0.9732825001296179,
+dist-packages/pdf2image/generators.py,counter_generator,41,0.9731217255837928,"n_sig_params_unmentioned=1, return_yield_mismatch=1, n_doc_numbers_unmatched_defaults=1"
+dist-packages/pip/_vendor/rich/console.py,render,1300,0.9726598401529577,"return_yield_mismatch=1, n_code_exceptions_undocumented=1"
+dist-packages/pip/_internal/metadata/importlib/_envs.py,find_legacy_editables,96,0.9719279575237109,return_yield_mismatch=1
+dist-packages/networkx/readwrite/sparse6.py,parseData,151,0.9713759177040439,return_yield_mismatch=1
+dist-packages/sklearn/base.py,get_shape,830,0.9713041431338472,n_doc_params_unmatched=2
+dist-packages/scipy/sparse/_base.py,nonzero,1165,0.9711268570011368,n_doc_params_unmatched=2
+dist-packages/reportlab/platypus/paragraph.py,getActualLineWidths0,2795,0.9707251395324537,
+dist-packages/click/core.py,get_help_option_names,1177,0.9702374472532587,n_sig_params_unmentioned=1
+dist-packages/sklearn/cluster/_birch.py,_iterate_sparse_X,28,0.9694352944534962,"n_sig_params_unmentioned=1, return_yield_mismatch=1"
+dist-packages/pip/_vendor/rich/segment.py,simplify,523,0.9688899887031202,return_yield_mismatch=1
+dist-packages/networkx/algorithms/bipartite/edgelist.py,generate_edgelist,127,0.968698857550186,"n_doc_params_unmatched=2, return_yield_mismatch=1, n_code_exceptions_undocumented=1"
+dist-packages/sklearn/conftest.py,pyplot,256,0.9684774799015875,return_yield_mismatch=1
+dist-packages/scipy/_lib/_uarray/_backend.py,set_state,136,0.9683634228844598,return_yield_mismatch=1
+dist-packages/pandas/tseries/holiday.py,merge_class,550,0.9681641148192902,
+dist-packages/sklearn/externals/_arff.py,encode_data,487,0.9678109662783007,"return_yield_mismatch=1, n_code_exceptions_undocumented=1"
+dist-packages/pip/_vendor/pkg_resources/__init__.py,split_sections,3520,0.9674471786332282,"n_sig_params_unmentioned=1, return_yield_mismatch=1, n_code_exceptions_undocumented=1"
+dist-packages/matplotlib/backend_bases.py,_allow_interrupt,1650,0.9668400590127348,"return_yield_mismatch=1, n_doc_exceptions_unmatched=1"
+dist-packages/pandas/io/html.py,_get_skiprows,88,0.9667113562871055,"n_doc_params_unmatched=1, return_yield_mismatch=1"
+dist-packages/anyio/_core/_concurrency_utils.py,gather,80,0.9661418376559608,
+dist-packages/pikepdf/models/image/_shared.py,_array_list,83,0.964913386646768,
+ipaddress.py,_collapse_addresses_internal,255,0.9647864137724317,"n_doc_params_unmatched=2, return_yield_mismatch=1"
