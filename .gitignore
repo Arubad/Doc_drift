@@ -12,3 +12,7 @@ venv/
 .DS_Store
 .vscode/
 .idea/
+
+# Pinned corpus built by scripts/build_corpus.sh
+/corpus_src/
+/repos/
