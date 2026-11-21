@@ -159,10 +159,14 @@ def sub_auroc(score, subset="interface"):
 
 
 # ----------------------------------------------------------------- run variants
-rows, real_scores = [], {}
+CKPT = os.path.join(DATA, "exp9_checkpoint.pkl" if not os.environ.get("DOCDRIFT_QUICK") else "exp9_quick_ckpt.pkl")
+rows, real_scores = pd.read_pickle(CKPT) if os.path.exists(CKPT) else ([], {})   # resume after VM loss
 for regime, ops in REGIMES.items():
     for fam in FAMILIES:
         name = f"{fam}|{regime}"
+        if name in real_scores:
+            print(f"{name:40s} (from checkpoint)", flush=True)
+            continue
         key = make(fam)[0]
         # in-distribution
         p, _ = fit_predict(fam, train_rows(tr, regime, ops), X[key][0][te])
@@ -194,6 +198,7 @@ for regime, ops in REGIMES.items():
         print(f"{name:40s} in-dist {indist:.3f}  LOMO {np.mean(lomo):.3f}  "
               f"real-pair interface {rows[-1]['real_pair_acc_interface']:.3f} all {rows[-1]['real_pair_acc_all']:.3f}",
               flush=True)
+        pd.to_pickle((rows, real_scores), CKPT)
 
 # zero-training heuristic (reference only, not in the correlation)
 from docdrift.models import LexicalHeuristic

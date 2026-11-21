@@ -63,8 +63,11 @@ class Git:
 
     def blob(self, rev: str, path: str) -> str | None:
         self._cat.stdin.write(f"{rev}:{path}\n".encode()); self._cat.stdin.flush()
-        header = self._cat.stdout.readline().split()
-        if len(header) < 3 or header[1] == b"missing":
+        line = self._cat.stdout.readline().rstrip(b"\n")
+        if line.endswith(b" missing") or line.endswith(b" ambiguous"):   # path may contain spaces
+            return None
+        header = line.split()
+        if len(header) != 3 or not header[2].isdigit():
             return None
         size = int(header[2])
         data = self._cat.stdout.read(size); self._cat.stdout.read(1)

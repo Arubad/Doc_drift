@@ -71,6 +71,39 @@ A result against H1 (in-distribution predicts better, or neither predicts) is re
   so they show what a mutation-free detector achieves on real drift.
 * LLM-assisted annotation of all pairs, validated against the 150 manual labels.
 
+## Addendum A (2026-11-21, after exp9 results, before any doc-side result): doc-side synthetic drift
+
+**Motivation (from exp9).** All 28 code-side variants are at chance on real pairs
+(interface pair accuracy 0.39–0.60, AUROC ≈ 0.50), and part of the below-chance behaviour is
+traced to one artifact: synthetic drift only edits *code*, so "docstring names something not in
+the signature" becomes a perfect drift cue, while real fixes edit the *docstring* and often add
+legitimate such names (documented `**kwargs` keys, attributes).
+
+**Hypothesis H4.** Detectors trained on *doc-side* synthetic drift — mutations of the docstring
+with the code held fixed, mirroring how real drift is fixed — reach real interface pair accuracy
+above chance (95 % cluster-bootstrap CI lower bound > 0.5) and above the best code-side variant
+of the same family.
+
+**Design (exp10).** Doc-side operators on the same pinned corpus: `doc_rename_param`,
+`doc_drop_param`, `doc_return_yield`, `doc_drop_raise`, `doc_add_raise`, `doc_change_number`,
+`doc_swap_type`, `doc_negate`; benign doc edits as hard negatives: `doc_reflow`,
+`doc_synonym`. All docstrings (clean, mutated, benign) are rendered identically (cleaned text
+re-inserted, `ast.unparse`). Replacement identifiers / exception names are drawn from pools
+mined from the corpus, and inserted sentences use several templates, to limit fingerprints.
+Families and leakage control as in exp9; regimes: `doc-all`, `doc+code-all`; LOMO over
+doc-side operators reported for completeness. Same real-pair metrics and bootstrap.
+
+A result against H4 is reported the same way.
+
 ## Deviations
 
-*(none yet)*
+1. **setuptools** failed in the first mining pass (a path containing a space broke the
+   `git cat-file` reader). Fixed (`Git.blob`) and mined separately; pairs appended before
+   cleaning. All 33 repositories are included.
+2. **Added secondary analyses (exp9b)**, decided after the first annotation pass and after a
+   smoke test of exp9 on 300 pairs / 6 variants, but **before** the full exp9 run produced any
+   result: (a) pair accuracy on annotation-verified drift pairs and on not-drift pairs;
+   (b) the accuracy ceiling implied by label precision, p + (1 − p)/2; (c) per-category
+   accuracy (H3, already planned). The primary analysis (H1 on the interface subset) is unchanged.
+3. **Annotation** first pass by an LLM assistant (annotator A); a second, independent human pass
+   on ≥ 50 pairs is planned to report inter-annotator agreement (Cohen's κ).
