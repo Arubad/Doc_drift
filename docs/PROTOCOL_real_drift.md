@@ -93,6 +93,15 @@ mined from the corpus, and inserted sentences use several templates, to limit fi
 Families and leakage control as in exp9; regimes: `doc-all`, `doc+code-all`; LOMO over
 doc-side operators reported for completeness. Same real-pair metrics and bootstrap.
 
+**Length control (added before any doc-side code ran).** In 73 % of real interface pairs the new
+docstring is longer than the old one, so "shorter docstring ⇒ drift" alone beats chance without
+any code–docstring alignment. Therefore: (i) a benign `doc_drop_section` operator (removes an
+Examples / See Also / Notes / References section or a doctest block) is added so that shortening
+is not a label cue; (ii) a length-only baseline (score = −docstring words) is reported;
+(iii) H4 is additionally evaluated on the **length-matched** subset of real pairs
+(|words_new − words_old| ≤ 10 % of words_old). H4 counts as supported only if it holds on the
+length-matched subset too.
+
 A result against H4 is reported the same way.
 
 ## Deviations
