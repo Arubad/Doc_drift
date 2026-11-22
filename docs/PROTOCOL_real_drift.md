@@ -137,10 +137,10 @@ above is the only one run.
    result: (a) pair accuracy on annotation-verified drift pairs and on not-drift pairs;
    (b) the accuracy ceiling implied by label precision, p + (1 − p)/2; (c) per-category
    accuracy (H3, already planned). The primary analysis (H1 on the interface subset) is unchanged.
+3. **Annotation** first pass by an LLM assistant (annotator A); a second, independent human pass
+   on ≥ 50 pairs is planned to report inter-annotator agreement (Cohen's κ).
 4. **exp11b (exploratory, decided after seeing exp11 results).** Split of the length-matched
    interface pairs by length direction (new longer / shorter / same length) to test whether the
    LLM judges' accuracy is a residual length effect. Reported as exploratory, not as a test of H5/H5b.
 5. **exp11 checkpointing** (`bf0c575`) was added after the 1.5B run started and before the 7B run;
    it changes only resumability, not scoring.
-3. **Annotation** first pass by an LLM assistant (annotator A); a second, independent human pass
-   on ≥ 50 pairs is planned to report inter-annotator agreement (Cohen's κ).
