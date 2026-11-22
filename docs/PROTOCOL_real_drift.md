@@ -104,6 +104,29 @@ length-matched subset too.
 
 A result against H4 is reported the same way.
 
+## Addendum B (2026-11-22, after exp10, before any LLM result): LLM judges
+
+**Motivation.** All mutation-trained detectors are near chance on real pairs, and a
+docstring-length rule (0.78 interface / 0.63 length-matched) beats them all. Open question:
+is static drift detection on real fixes solvable from the (code, docstring) pair at all, by a
+model that was never trained on mutations?
+
+**Hypotheses.**
+* **H5.** An open-weights code LLM used zero-shot as a judge reaches pair accuracy above
+  chance on the **length-matched interface** subset (95 % cluster-bootstrap CI lower bound > 0.5).
+* **H5b.** On the same subset it beats the length-only baseline (paired bootstrap CI of the
+  difference excludes 0).
+
+**Design (exp11).** Models: Qwen2.5-Coder-1.5B-Instruct (fp16) and Qwen2.5-Coder-7B-Instruct
+(4-bit NF4), Colab T4. Pointwise prompt, identical for every row: the function source (with its
+docstring) and the question whether the docstring accurately describes the code's parameters,
+return value, raised exceptions and behaviour, answer Yes/No. Drift score =
+P(No) / (P(Yes) + P(No)) from next-token logits (no sampling, deterministic). Evaluated on all
+real pairs (both sides), and on a fixed random sample of 1,000 synthetic code-side rows
+(500 drifted / 500 consistent) to report the LLM's synthetic AUROC alongside its real accuracy.
+Same subsets, metrics and bootstrap as exp9/exp10. No prompt tuning on real pairs: the prompt
+above is the only one run.
+
 ## Deviations
 
 1. **setuptools** failed in the first mining pass (a path containing a space broke the
