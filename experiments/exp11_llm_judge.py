@@ -54,9 +54,13 @@ def build(source: str) -> str:
 
 
 @torch.no_grad()
-def score(sources) -> np.ndarray:
-    out = []
-    for i in range(0, len(sources), BATCH):
+def score(sources, part_path=None) -> np.ndarray:
+    """Batched scoring; if part_path is given, saves progress every 100 batches and resumes."""
+    out, start = [], 0
+    if part_path and os.path.exists(part_path):
+        out = [np.load(part_path)]; start = len(out[0])
+        print(f"  resuming at {start}/{len(sources)}", flush=True)
+    for i in range(start, len(sources), BATCH):
         enc = tok([build(s) for s in sources[i:i + BATCH]], return_tensors="pt", padding=True).to("cuda:0")
         logits = model(**enc).logits[:, -1, :].float()
         p = torch.softmax(logits, -1)
@@ -64,6 +68,8 @@ def score(sources) -> np.ndarray:
         out.append((pn / (py + pn + 1e-12)).cpu().numpy())
         if (i // BATCH) % 50 == 0:
             print(f"  {i + len(sources[i:i + BATCH])}/{len(sources)}", flush=True)
+        if part_path and (i // BATCH) % 100 == 99:
+            np.save(part_path, np.concatenate(out))
     return np.concatenate(out)
 
 
@@ -84,7 +90,7 @@ if "synthetic" not in done:
     from sklearn.metrics import roc_auc_score
     print(f"synthetic AUROC {roc_auc_score(syn.label, done['synthetic']):.3f}", flush=True)
 if "real" not in done:
-    done["real"] = score(real_src); pd.to_pickle(done, ckpt)
+    done["real"] = score(real_src, ckpt.replace(".pkl", "_real_part.npy")); pd.to_pickle(done, ckpt)
 if QUICK:
     print("quick scores:", np.round(done["real"], 3)); sys.exit(0)
 
