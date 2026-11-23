@@ -1,0 +1,73 @@
+synthetic rows 98834, real pairs 6890 from 33 repos
+features ...
+struct-LR|all                            in-dist 0.751  LOMO 0.551  real-pair interface 0.455 all 0.461
+struct-GBM|all                           in-dist 0.801  LOMO 0.556  real-pair interface 0.452 all 0.456
+tfidf-LR|all                             in-dist 0.847  LOMO 0.642  real-pair interface 0.513 all 0.517
+hybrid-GBM|all                           in-dist 0.844  LOMO 0.577  real-pair interface 0.499 all 0.495
+struct-LR|surface                        in-dist 0.766  LOMO 0.679  real-pair interface 0.389 all 0.409
+struct-GBM|surface                       in-dist 0.844  LOMO 0.667  real-pair interface 0.411 all 0.429
+tfidf-LR|surface                         in-dist 0.898  LOMO 0.614  real-pair interface 0.485 all 0.491
+hybrid-GBM|surface                       in-dist 0.901  LOMO 0.660  real-pair interface 0.450 all 0.455
+struct-LR|behavioural                    in-dist 0.929  LOMO 0.557  real-pair interface 0.603 all 0.577
+struct-GBM|behavioural                   in-dist 0.947  LOMO 0.513  real-pair interface 0.489 all 0.498
+tfidf-LR|behavioural                     in-dist 0.940  LOMO 0.539  real-pair interface 0.507 all 0.511
+hybrid-GBM|behavioural                   in-dist 0.964  LOMO 0.489  real-pair interface 0.500 all 0.498
+struct-LR|semantic                       in-dist 0.597  LOMO 0.542  real-pair interface 0.499 all 0.492
+struct-GBM|semantic                      in-dist 0.652  LOMO 0.540  real-pair interface 0.544 all 0.531
+tfidf-LR|semantic                        in-dist 0.806  LOMO 0.618  real-pair interface 0.525 all 0.524
+hybrid-GBM|semantic                      in-dist 0.680  LOMO 0.552  real-pair interface 0.545 all 0.535
+struct-LR|surface+behavioural            in-dist 0.802  LOMO 0.565  real-pair interface 0.455 all 0.465
+struct-GBM|surface+behavioural           in-dist 0.857  LOMO 0.560  real-pair interface 0.455 all 0.461
+tfidf-LR|surface+behavioural             in-dist 0.884  LOMO 0.611  real-pair interface 0.498 all 0.507
+hybrid-GBM|surface+behavioural           in-dist 0.905  LOMO 0.578  real-pair interface 0.485 all 0.481
+struct-LR|interface                      in-dist 0.788  LOMO 0.588  real-pair interface 0.490 all 0.491
+struct-GBM|interface                     in-dist 0.857  LOMO 0.584  real-pair interface 0.470 all 0.471
+tfidf-LR|interface                       in-dist 0.929  LOMO 0.628  real-pair interface 0.512 all 0.513
+hybrid-GBM|interface                     in-dist 0.915  LOMO 0.605  real-pair interface 0.487 all 0.488
+struct-LR|all-no-benign-neg              in-dist 0.750  LOMO 0.551  real-pair interface 0.408 all 0.430
+struct-GBM|all-no-benign-neg             in-dist 0.798  LOMO 0.559  real-pair interface 0.442 all 0.451
+tfidf-LR|all-no-benign-neg               in-dist 0.801  LOMO 0.525  real-pair interface 0.506 all 0.512
+hybrid-GBM|all-no-benign-neg             in-dist 0.832  LOMO 0.558  real-pair interface 0.478 all 0.484
+[saved] ../results/exp9_variants.csv
+[saved] ../results/exp9_correlation.csv
+[saved] ../results/exp9_pair_acc_ci.csv
+                       variant     family              regime  indist_auroc  lomo_auroc  real_pair_acc_interface  real_pair_acc_all  real_auroc_interface  real_auroc_all
+                 struct-LR|all  struct-LR                 all         0.751       0.551                    0.455              0.461                 0.506           0.502
+                struct-GBM|all struct-GBM                 all         0.801       0.556                    0.452              0.456                 0.517           0.509
+                  tfidf-LR|all   tfidf-LR                 all         0.847       0.642                    0.513              0.517                 0.502           0.502
+                hybrid-GBM|all hybrid-GBM                 all         0.844       0.577                    0.499              0.495                 0.519           0.511
+             struct-LR|surface  struct-LR             surface         0.766       0.679                    0.389              0.409                 0.497           0.496
+            struct-GBM|surface struct-GBM             surface         0.844       0.667                    0.411              0.429                 0.503           0.498
+              tfidf-LR|surface   tfidf-LR             surface         0.898       0.614                    0.485              0.491                 0.497           0.498
+            hybrid-GBM|surface hybrid-GBM             surface         0.901       0.660                    0.450              0.455                 0.505           0.501
+         struct-LR|behavioural  struct-LR         behavioural         0.929       0.557                    0.603              0.577                 0.520           0.513
+        struct-GBM|behavioural struct-GBM         behavioural         0.947       0.513                    0.489              0.498                 0.497           0.498
+          tfidf-LR|behavioural   tfidf-LR         behavioural         0.940       0.539                    0.507              0.511                 0.502           0.502
+        hybrid-GBM|behavioural hybrid-GBM         behavioural         0.964       0.489                    0.500              0.498                 0.501           0.500
+            struct-LR|semantic  struct-LR            semantic         0.597       0.542                    0.499              0.492                 0.505           0.503
+           struct-GBM|semantic struct-GBM            semantic         0.652       0.540                    0.544              0.531                 0.506           0.504
+             tfidf-LR|semantic   tfidf-LR            semantic         0.806       0.618                    0.525              0.524                 0.505           0.503
+           hybrid-GBM|semantic hybrid-GBM            semantic         0.680       0.552                    0.545              0.535                 0.507           0.505
+ struct-LR|surface+behavioural  struct-LR surface+behavioural         0.802       0.565                    0.455              0.465                 0.506           0.502
+struct-GBM|surface+behavioural struct-GBM surface+behavioural         0.857       0.560                    0.455              0.461                 0.514           0.506
+  tfidf-LR|surface+behavioural   tfidf-LR surface+behavioural         0.884       0.611                    0.498              0.507                 0.501           0.501
+hybrid-GBM|surface+behavioural hybrid-GBM surface+behavioural         0.905       0.578                    0.485              0.481                 0.516           0.509
+           struct-LR|interface  struct-LR           interface         0.788       0.588                    0.490              0.491                 0.509           0.504
+          struct-GBM|interface struct-GBM           interface         0.857       0.584                    0.470              0.471                 0.514           0.506
+            tfidf-LR|interface   tfidf-LR           interface         0.929       0.628                    0.512              0.513                 0.501           0.501
+          hybrid-GBM|interface hybrid-GBM           interface         0.915       0.605                    0.487              0.488                 0.515           0.508
+   struct-LR|all-no-benign-neg  struct-LR   all-no-benign-neg         0.750       0.551                    0.408              0.430                 0.504           0.500
+  struct-GBM|all-no-benign-neg struct-GBM   all-no-benign-neg         0.798       0.559                    0.442              0.451                 0.517           0.509
+    tfidf-LR|all-no-benign-neg   tfidf-LR   all-no-benign-neg         0.801       0.525                    0.506              0.512                 0.501           0.501
+  hybrid-GBM|all-no-benign-neg hybrid-GBM   all-no-benign-neg         0.832       0.558                    0.478              0.484                 0.515           0.508
+                     heuristic  heuristic                   -           NaN         NaN                    0.515              0.506                 0.509           0.504
+   subset  n_pairs  n_commits                     stat  value  ci_lo  ci_hi
+interface     4082       3462   spearman(indist, real)  0.180  0.087  0.287
+interface     4082       3462     spearman(lomo, real) -0.261 -0.340 -0.145
+interface     4082       3462    rho_lomo - rho_indist -0.441 -0.563 -0.288
+interface     4082       3462 P(rho_lomo > rho_indist)  0.000    NaN    NaN
+      all     6890       5644   spearman(indist, real)  0.200  0.123  0.290
+      all     6890       5644     spearman(lomo, real) -0.265 -0.314 -0.165
+      all     6890       5644    rho_lomo - rho_indist -0.464 -0.539 -0.345
+      all     6890       5644 P(rho_lomo > rho_indist)  0.000    NaN    NaN
+EXIT=0  elapsed=1912s

@@ -1,0 +1,165 @@
+### typing.py:1506 729  score=0.912  cues: n_sig_params_unmentioned=1, n_doc_params_unmatched=2, n_code_exceptions_undocumented=1
+def _determine_new_args(self, args):
+    """Determines new __args__ for __getitem__.
+
+    For example, suppose we had:
+      T1 = TypeVar('T1')
+      T2 = TypeVar('T2')
+      class A(Generic[T1, T2]): pass
+      T3 = TypeVar('T3')
+      B = A[int, T3]
+      C = B[str]
+    `B.__args__` is `(int, T3)`, so `C.__args__` should be `(int, str)`.
+    Unfortunately, this is harder than it looks, because if `T3` is
+    anything more exotic than a plain `TypeVar`, we need to consider
+    edge cases.
+    """
+    params = self.__parameters__
+    # In the example above, this would be {T3: str}
+    for param in params:
+        prepare = getattr(param, '__typing_prepare_subst__', None)
+        if prepare is not None:
+            args = prepare(self, args)
+    alen = len(args)
+    plen = len(params)
+    if alen != plen:
+        raise TypeError(f"Too {'many' if alen > plen else 'few'} arguments for {self};"
+                        f" actual {alen}, expected {plen}")
+    new_arg_by_param = dict(zip(params, args))
+    return tuple(self._make_substitution(self.__args__, new_arg_by_param))
+
+### types.py:77 980  score=0.912  cues: n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1
+def resolve_bases(bases):
+    """Resolve MRO entries dynamically as specified by PEP 560."""
+    new_bases = list(bases)
+    updated = False
+    shift = 0
+    for i, base in enumerate(bases):
+        if isinstance(base, type):
+            continue
+        if not hasattr(base, "__mro_entries__"):
+            continue
+        new_base = base.__mro_entries__(bases)
+        updated = True
+        if not isinstance(new_base, tuple):
+            raise TypeError("__mro_entries__ must return a tuple")
+        else:
+            new_bases[i+shift:i+shift+1] = new_base
+            shift += len(new_base) - 1
+    if not updated:
+        return bases
+    return tuple(new_bases)
+
+### importlib/resources/_common.py:193 1851  score=0.910  cues: n_sig_params_unmentioned=1
+def _temp_dir(path):
+    """
+    Given a traversable dir, recursively replicate the whole tree
+    to the file system in a context manager.
+    """
+    assert path.is_dir()
+    with _temp_path(tempfile.TemporaryDirectory()) as temp_dir:
+        yield _write_contents(temp_dir, path)
+
+### tokenize.py:575 96  score=0.907  cues: n_sig_params_unmentioned=2, n_code_exceptions_undocumented=2
+def _generate_tokens_from_c_tokenizer(source, encoding=None, extra_tokens=False):
+    """Tokenize a source reading Python code as unicode strings using the internal C tokenizer"""
+    if encoding is None:
+        it = _tokenize.TokenizerIter(source, extra_tokens=extra_tokens)
+    else:
+        it = _tokenize.TokenizerIter(source, encoding=encoding, extra_tokens=extra_tokens)
+    try:
+        for info in it:
+            yield TokenInfo._make(info)
+    except SyntaxError as e:
+        if type(e) != SyntaxError:
+            raise e from None
+        msg = _transform_msg(e.msg)
+        raise TokenError(msg, (e.lineno, e.offset)) from None
+
+### ast.py:799 81  score=0.888  cues: 
+def block(self, *, extra = None):
+    """A context manager for preparing the source for blocks. It adds
+    the character':', increases the indentation on enter and decreases
+    the indentation on exit. If *extra* is given, it will be directly
+    appended after the colon character.
+    """
+    self.write(":")
+    if extra:
+        self.write(extra)
+    self._indent += 1
+    yield
+    self._indent -= 1
+
+### dis.py:909 800  score=0.888  cues: 
+def findlinestarts(code):
+    """Find the offsets in a byte code which are start of lines in the source.
+
+    Generate pairs (offset, lineno)
+    lineno will be an integer or None the offset does not have a source line.
+    """
+
+    lastline = False # None is a valid line number
+    for start, end, line in code.co_lines():
+        if line is not lastline:
+            lastline = line
+            yield start, line
+    return
+
+### ast.py:813 82  score=0.886  cues: 
+def delimit(self, start, end):
+    """A context manager for preparing the source for expressions. It adds
+    *start* to the buffer and enters, after exit it adds *end*."""
+
+    self.write(start)
+    yield
+    self.write(end)
+
+### dis.py:945 802  score=0.886  cues: n_sig_params_unmentioned=1
+def _find_store_names(co):
+    """Find names of variables which are written in the code
+
+    Generate sequence of strings
+    """
+    STORE_OPS = {
+        opmap['STORE_NAME'],
+        opmap['STORE_GLOBAL']
+    }
+
+    names = co.co_names
+    for _, _, op, arg in _unpack_opargs(co.co_code):
+        if op in STORE_OPS:
+            yield names[arg]
+
+### subprocess.py:1329 912  score=0.879  cues: 
+def _on_error_fd_closer(self):
+    """Helper to ensure file descriptors opened in _get_handles are closed"""
+    to_close = []
+    try:
+        yield to_close
+    except:
+        if hasattr(self, '_devnull'):
+            to_close.append(self._devnull)
+            del self._devnull
+        for fd in to_close:
+            try:
+                if _mswindows and isinstance(fd, Handle):
+                    fd.Close()
+                else:
+                    os.close(fd)
+            except OSError:
+                pass
+        raise
+
+### asyncio/unix_events.py:178 1587  score=0.877  cues: n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1, n_doc_exceptions_unmatched=1
+def _check_signal(self, sig):
+    """Internal helper to validate a signal.
+
+    Raise ValueError if the signal number is invalid or uncatchable.
+    Raise RuntimeError if there is a problem setting up the handler.
+    """
+    if not isinstance(sig, int):
+        raise TypeError(f'sig must be an int, not {sig!r}')
+
+    if sig not in signal.valid_signals():
+        raise ValueError(f'invalid signal number {sig}')
+

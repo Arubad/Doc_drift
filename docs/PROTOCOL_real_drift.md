@@ -144,3 +144,6 @@ above is the only one run.
    LLM judges' accuracy is a residual length effect. Reported as exploratory, not as a test of H5/H5b.
 5. **exp11 checkpointing** (`bf0c575`) was added after the 1.5B run started and before the 7B run;
    it changes only resumability, not scoring.
+6. **exp11c (exploratory, post hoc): contamination check.** Qwen2.5-Coder (released 2024-09) may
+   have seen the fixed docstrings of earlier commits. Pair accuracy is compared for commits before
+   vs on/after 2024-10-01 (417 interface / 139 length-matched unseen pairs).

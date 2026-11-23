@@ -1,0 +1,41 @@
+file,name,lineno,drift_score,cues
+site-packages/bokeh/settings.py,bokehjsdir,779,0.9902045295053139,
+site-packages/bokeh/util/paths.py,serverdir,82,0.9856802938755956,
+site-packages/statsmodels/stats/descriptivestats.py,summary,583,0.9853684810760996,
+site-packages/django/forms/widgets.py,format_value,588,0.9816096094642094,
+site-packages/sqlalchemy/util/langhelpers.py,class_hierarchy,855,0.9814579224033579,n_doc_params_unmatched=1
+site-packages/networkx/utils/random_sequence.py,random_weighted_sample,140,0.9810020206532766,"n_sig_params_unmentioned=2, n_code_exceptions_undocumented=1"
+site-packages/jsonschema/_utils.py,find_additional_properties,69,0.9802233246128654,"n_sig_params_unmentioned=1, n_doc_params_unmatched=1, return_yield_mismatch=1"
+site-packages/networkx/readwrite/sparse6.py,parseData,150,0.9801857754745121,return_yield_mismatch=1
+site-packages/numpy/_core/arrayprint.py,dtype_short_repr,1537,0.9796774401654549,
+site-packages/django/conf/urls/i18n.py,i18n_patterns,8,0.9788537991920478,n_sig_params_unmentioned=1
+site-packages/pymdownx/highlight.py,_wrap_code,157,0.9785609166280886,return_yield_mismatch=1
+site-packages/setuptools/_vendor/platformdirs/windows.py,get_win_folder_from_registry,183,0.9774877249979393,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=2"
+site-packages/_pytest/_py/path.py,as_cwd,1005,0.9753740212536529,return_yield_mismatch=1
+site-packages/_pytest/recwarn.py,recwarn,35,0.9753063018812594,return_yield_mismatch=1
+site-packages/setuptools/_vendor/inflect/__init__.py,num,2198,0.9726995253932305,n_code_exceptions_undocumented=1
+site-packages/setuptools/_vendor/more_itertools/recipes.py,random_product,608,0.9718490995802848,n_doc_numbers_unmatched_defaults=1
+site-packages/django/db/backends/base/base.py,execute_wrapper,772,0.9702773491640283,return_yield_mismatch=1
+site-packages/_pytest/config/__init__.py,_iter_rewritable_modules,900,0.9699612584893327,"n_sig_params_unmentioned=1, n_doc_params_unmatched=1, return_yield_mismatch=1"
+site-packages/_pytest/capture.py,capsys,978,0.9684080821778028,"n_sig_params_unmentioned=1, n_doc_params_unmatched=4, return_yield_mismatch=1"
+site-packages/nltk/corpus/reader/wordnet.py,common_hypernyms,681,0.9683314455481775,
+site-packages/pathspec/pathspec.py,match_tree_files,357,0.9678844536356516,"n_doc_params_unmatched=2, return_yield_mismatch=1, n_doc_exceptions_unmatched=1"
+pathlib/_abc.py,parts,282,0.9678660538032736,
+site-packages/django/contrib/gis/gdal/raster/source.py,geotransform,338,0.9673329623832719,
+site-packages/_pytest/capture.py,capsysbinary,1006,0.9671288149767093,"n_sig_params_unmentioned=1, n_doc_params_unmatched=3, return_yield_mismatch=1"
+site-packages/networkx/algorithms/coloring/greedy_coloring.py,strategy_connected_sequential,172,0.9670066198359044,"return_yield_mismatch=1, n_code_exceptions_undocumented=1"
+site-packages/pandas/tseries/holiday.py,merge_class,502,0.9660879783754267,
+site-packages/pandas/_testing/contexts.py,ensure_clean,99,0.9651832197606954,"n_doc_params_unmatched=1, return_yield_mismatch=1"
+site-packages/networkx/algorithms/coloring/greedy_coloring.py,strategy_independent_set,122,0.9649447545520425,"n_doc_params_unmatched=1, return_yield_mismatch=1"
+site-packages/matplotlib/__init__.py,rc_context,1166,0.9644276725615585,"n_doc_params_unmatched=2, return_yield_mismatch=1"
+site-packages/_pytest/capture.py,capfdbinary,1062,0.9639108376666031,"n_sig_params_unmentioned=1, n_doc_params_unmatched=3, return_yield_mismatch=1"
+site-packages/bokeh/util/paths.py,bokehjsdir,91,0.9635596776907948,
+site-packages/_pytest/capture.py,capfd,1034,0.9633664178895448,"n_sig_params_unmentioned=1, n_doc_params_unmatched=3, return_yield_mismatch=1"
+site-packages/xarray/core/datatree.py,_ipython_key_completions_,750,0.9627006365098763,
+site-packages/nltk/parse/corenlp.py,parse_text,294,0.9625962227028162,"n_doc_params_unmatched=1, return_yield_mismatch=1"
+site-packages/scipy/_lib/_uarray/_backend.py,all_of_type,467,0.9624872605804786,n_sig_params_unmentioned=1
+site-packages/sklearn/utils/estimator_checks.py,_generate_sparse_data,973,0.9624056143118291,"n_doc_params_unmatched=1, return_yield_mismatch=1"
+site-packages/statsmodels/tsa/statespace/cfa_simulation_smoother.py,simulate,177,0.9622647417193156,"n_sig_params_unmentioned=1, n_doc_params_unmatched=7"
+site-packages/bokeh/io/doc.py,patch_curdoc,68,0.961804119783212,return_yield_mismatch=1
+site-packages/pydantic/_internal/_generate_schema.py,get_schema_or_ref,2447,0.9614184164651638,"n_doc_params_unmatched=1, return_yield_mismatch=1"
+site-packages/rich/segment.py,simplify,523,0.9610026810609605,return_yield_mismatch=1

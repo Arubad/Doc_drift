@@ -1,0 +1,13 @@
+done struct-LR
+done struct-GBM
+done tfidf-LR
+[saved] results/exp4_cross_project.csv
+[saved] results/exp4_summary.csv
+                           auroc_mean  auroc_std  auprc_mean  auprc_std  f1_mean  f1_std  recall@5%fpr_mean  recall@5%fpr_std
+detector   split                                                                                                             
+struct-GBM cross-project        0.805      0.024       0.874      0.017    0.798   0.013              0.394             0.050
+           within-project       0.808      0.002       0.876      0.002    0.798   0.001              0.398             0.008
+struct-LR  cross-project        0.755      0.023       0.836      0.016    0.778   0.011              0.321             0.026
+           within-project       0.757      0.002       0.837      0.003    0.779   0.001              0.321             0.006
+tfidf-LR   cross-project        0.843      0.016       0.896      0.014    0.815   0.010              0.448             0.055
+           within-project       0.856      0.002       0.905      0.002    0.825   0.003              0.480             0.009

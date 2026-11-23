@@ -16,3 +16,6 @@ venv/
 # Pinned corpus built by scripts/build_corpus.sh
 /corpus_src/
 /repos/
+
+# large intermediate pickles (pairs are released as dataset/docfix_pairs.jsonl.gz)
+runs/**/real_pairs*.pkl

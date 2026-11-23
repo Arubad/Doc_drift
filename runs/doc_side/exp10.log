@@ -1,0 +1,194 @@
+results/exp9_variants.csv
+[corpus] CPython 3.13.1 Lib/
+[corpus] 35 pinned packages
+[corpus] done -> /content/corpus_src (10706 .py files)
+mined 20758 documented functions from 183 projects
+n_functions                 20758.000000
+n_projects                    183.000000
+median_doc_words               33.000000
+median_code_lines              24.000000
+frac_mentions_all_params        0.659264
+frac_mentions_return            0.532277
+frac_mentions_raise             0.075200
+frac_has_numeric_default        0.075441
+frac_defaults_mentioned         0.035360
+dtype: float64
+[saved] results/exp1_corpus_stats.csv
+[saved] results/exp1_top_projects.csv
+done
+kind         label
+behavioural  1        25938
+benign       0        16573
+clean        0        20758
+semantic     1        11160
+surface      1        24405
+dtype: int64
+mutation
+none                 20758
+rename_local         15760
+add_param            10879
+add_raise             8381
+rename_param          8356
+wrap_return           7940
+return_to_yield       7742
+negate_condition      6689
+swap_binop            4471
+remove_param          2611
+change_default        2559
+remove_raise          1875
+rewrite_augassign      813
+Name: count, dtype: int64
+[saved] results/exp2_applicability.csv
+[saved] results/exp2_benchmark_composition.csv
+             mutation         kind  applicable  attempted   rate
+0           add_param      surface       20758      20758  1.000
+1           add_raise  behavioural       17630      20758  0.849
+2      change_default      surface        6853      20758  0.330
+3    negate_condition     semantic       14373      20758  0.692
+4        remove_param      surface        6791      20758  0.327
+5        remove_raise  behavioural        4601      20758  0.222
+6        rename_param      surface       17630      20758  0.849
+7     return_to_yield  behavioural       16253      20758  0.783
+8          swap_binop     semantic       10081      20758  0.486
+9         wrap_return  behavioural       16324      20758  0.786
+10       rename_local       benign       16530      20758  0.796
+11  rewrite_augassign       benign        1576      20758  0.076
+=== QUICK exp10 ===
+[saved] ../results/exp10_applicability.csv
+kind        mutation         
+clean       none                 1500
+doc-benign  doc_drop_section      204
+            doc_reflow            812
+            doc_synonym           648
+doc-drift   doc_add_raise         996
+            doc_change_number      25
+            doc_drop_param        351
+            doc_drop_raise         31
+            doc_negate            657
+            doc_rename_param      549
+            doc_return_yield      571
+            doc_swap_type         424
+mean docstring words by label: {0: 61.3, 1: 62.4}
+training rows: doc 6768, code 7117; real pairs 6890
+struct-LR|doc-all            in-dist 0.757  LOMO nan  real interface 0.547  len-matched 0.559
+struct-GBM|doc-all           in-dist 0.774  LOMO nan  real interface 0.503  len-matched 0.525
+tfidf-LR|doc-all             in-dist 0.810  LOMO nan  real interface 0.489  len-matched 0.538
+hybrid-GBM|doc-all           in-dist 0.793  LOMO nan  real interface 0.505  len-matched 0.537
+struct-LR|doc+code-all       in-dist 0.744  LOMO nan  real interface 0.560  len-matched 0.561
+struct-GBM|doc+code-all      in-dist 0.768  LOMO nan  real interface 0.507  len-matched 0.512
+tfidf-LR|doc+code-all        in-dist 0.742  LOMO nan  real interface 0.501  len-matched 0.537
+hybrid-GBM|doc+code-all      in-dist 0.776  LOMO nan  real interface 0.512  len-matched 0.514
+[saved] ../results/exp10_variants.csv
+[saved] ../results/exp10_real_ci.csv
+                variant               family       regime  indist_auroc  lomo_auroc  pair_acc_interface  pair_acc_interface-length-matched  pair_acc_all
+      struct-LR|doc-all            struct-LR      doc-all         0.757         NaN               0.547                              0.559         0.531
+     struct-GBM|doc-all           struct-GBM      doc-all         0.774         NaN               0.503                              0.525         0.498
+       tfidf-LR|doc-all             tfidf-LR      doc-all         0.810         NaN               0.489                              0.538         0.493
+     hybrid-GBM|doc-all           hybrid-GBM      doc-all         0.793         NaN               0.505                              0.537         0.500
+ struct-LR|doc+code-all            struct-LR doc+code-all         0.744         NaN               0.560                              0.561         0.544
+struct-GBM|doc+code-all           struct-GBM doc+code-all         0.768         NaN               0.507                              0.512         0.499
+  tfidf-LR|doc+code-all             tfidf-LR doc+code-all         0.742         NaN               0.501                              0.537         0.501
+hybrid-GBM|doc+code-all           hybrid-GBM doc+code-all         0.776         NaN               0.512                              0.514         0.501
+   baseline:shorter-doc baseline:shorter-doc            -           NaN         NaN               0.781                              0.629         0.723
+              heuristic            heuristic            -           NaN         NaN               0.515                              0.519         0.506
+                  subset                 variant  n_pairs  pair_acc  ci_lo  ci_hi
+               interface       struct-LR|doc-all     4082     0.547  0.533  0.563
+               interface      struct-GBM|doc-all     4082     0.503  0.488  0.520
+               interface        tfidf-LR|doc-all     4082     0.489  0.473  0.506
+               interface      hybrid-GBM|doc-all     4082     0.505  0.490  0.520
+               interface  struct-LR|doc+code-all     4082     0.560  0.543  0.577
+               interface struct-GBM|doc+code-all     4082     0.507  0.493  0.521
+               interface   tfidf-LR|doc+code-all     4082     0.501  0.485  0.518
+               interface hybrid-GBM|doc+code-all     4082     0.512  0.498  0.527
+               interface    baseline:shorter-doc     4082     0.781  0.769  0.795
+               interface               heuristic     4082     0.515  0.508  0.521
+interface-length-matched       struct-LR|doc-all     1641     0.559  0.534  0.585
+interface-length-matched      struct-GBM|doc-all     1641     0.525  0.502  0.545
+interface-length-matched        tfidf-LR|doc-all     1641     0.538  0.514  0.564
+interface-length-matched      hybrid-GBM|doc-all     1641     0.537  0.512  0.562
+interface-length-matched  struct-LR|doc+code-all     1641     0.561  0.535  0.584
+interface-length-matched struct-GBM|doc+code-all     1641     0.512  0.493  0.530
+interface-length-matched   tfidf-LR|doc+code-all     1641     0.537  0.512  0.561
+interface-length-matched hybrid-GBM|doc+code-all     1641     0.514  0.490  0.535
+interface-length-matched    baseline:shorter-doc     1641     0.629  0.608  0.651
+interface-length-matched               heuristic     1641     0.519  0.512  0.527
+                     all       struct-LR|doc-all     6890     0.531  0.518  0.542
+                     all      struct-GBM|doc-all     6890     0.498  0.488  0.509
+                     all        tfidf-LR|doc-all     6890     0.493  0.481  0.507
+                     all      hybrid-GBM|doc-all     6890     0.500  0.488  0.511
+                     all  struct-LR|doc+code-all     6890     0.544  0.531  0.557
+                     all struct-GBM|doc+code-all     6890     0.499  0.489  0.508
+                     all   tfidf-LR|doc+code-all     6890     0.501  0.488  0.513
+                     all hybrid-GBM|doc+code-all     6890     0.501  0.489  0.512
+                     all    baseline:shorter-doc     6890     0.723  0.713  0.733
+                     all               heuristic     6890     0.506  0.501  0.511
+=== FULL exp10 ===
+[saved] ../results/exp10_applicability.csv
+kind        mutation         
+clean       none                 20758
+doc-benign  doc_drop_section      2963
+            doc_reflow           11459
+            doc_synonym           8646
+doc-drift   doc_add_raise        13862
+            doc_change_number      309
+            doc_drop_param        4608
+            doc_drop_raise         471
+            doc_negate            8968
+            doc_rename_param      7706
+            doc_return_yield      7851
+            doc_swap_type         6333
+mean docstring words by label: {0: 62.4, 1: 63.3}
+training rows: doc 93934, code 98834; real pairs 6890
+struct-LR|doc-all            in-dist 0.753  LOMO 0.468  real interface 0.570  len-matched 0.559
+struct-GBM|doc-all           in-dist 0.798  LOMO 0.540  real interface 0.489  len-matched 0.531
+tfidf-LR|doc-all             in-dist 0.833  LOMO 0.523  real interface 0.473  len-matched 0.540
+hybrid-GBM|doc-all           in-dist 0.816  LOMO 0.551  real interface 0.488  len-matched 0.509
+struct-LR|doc+code-all       in-dist 0.739  LOMO nan  real interface 0.590  len-matched 0.563
+struct-GBM|doc+code-all      in-dist 0.781  LOMO nan  real interface 0.489  len-matched 0.520
+tfidf-LR|doc+code-all        in-dist 0.768  LOMO nan  real interface 0.495  len-matched 0.538
+hybrid-GBM|doc+code-all      in-dist 0.788  LOMO nan  real interface 0.488  len-matched 0.488
+[saved] ../results/exp10_variants.csv
+[saved] ../results/exp10_real_ci.csv
+                variant               family       regime  indist_auroc  lomo_auroc  pair_acc_interface  pair_acc_interface-length-matched  pair_acc_all
+      struct-LR|doc-all            struct-LR      doc-all         0.753       0.468               0.570                              0.559         0.547
+     struct-GBM|doc-all           struct-GBM      doc-all         0.798       0.540               0.489                              0.531         0.483
+       tfidf-LR|doc-all             tfidf-LR      doc-all         0.833       0.523               0.473                              0.540         0.484
+     hybrid-GBM|doc-all           hybrid-GBM      doc-all         0.816       0.551               0.488                              0.509         0.495
+ struct-LR|doc+code-all            struct-LR doc+code-all         0.739         NaN               0.590                              0.563         0.566
+struct-GBM|doc+code-all           struct-GBM doc+code-all         0.781         NaN               0.489                              0.520         0.483
+  tfidf-LR|doc+code-all             tfidf-LR doc+code-all         0.768         NaN               0.495                              0.538         0.507
+hybrid-GBM|doc+code-all           hybrid-GBM doc+code-all         0.788         NaN               0.488                              0.488         0.496
+   baseline:shorter-doc baseline:shorter-doc            -           NaN         NaN               0.781                              0.629         0.723
+              heuristic            heuristic            -           NaN         NaN               0.515                              0.519         0.506
+                  subset                 variant  n_pairs  pair_acc  ci_lo  ci_hi     best_code_variant  diff_vs_best_code  diff_ci_lo  diff_ci_hi
+               interface       struct-LR|doc-all     4082     0.570  0.555  0.585 struct-LR|behavioural             -0.033      -0.057      -0.008
+               interface      struct-GBM|doc-all     4082     0.489  0.475  0.503   struct-GBM|semantic             -0.055      -0.073      -0.036
+               interface        tfidf-LR|doc-all     4082     0.473  0.457  0.489     tfidf-LR|semantic             -0.053      -0.077      -0.029
+               interface      hybrid-GBM|doc-all     4082     0.488  0.473  0.503   hybrid-GBM|semantic             -0.057      -0.078      -0.037
+               interface  struct-LR|doc+code-all     4082     0.590  0.575  0.606 struct-LR|behavioural             -0.012      -0.033       0.013
+               interface struct-GBM|doc+code-all     4082     0.489  0.475  0.503   struct-GBM|semantic             -0.055      -0.074      -0.036
+               interface   tfidf-LR|doc+code-all     4082     0.495  0.477  0.510     tfidf-LR|semantic             -0.031      -0.054      -0.008
+               interface hybrid-GBM|doc+code-all     4082     0.488  0.473  0.504   hybrid-GBM|semantic             -0.057      -0.077      -0.036
+               interface    baseline:shorter-doc     4082     0.781  0.769  0.795                   NaN                NaN         NaN         NaN
+               interface               heuristic     4082     0.515  0.508  0.521                   NaN                NaN         NaN         NaN
+interface-length-matched       struct-LR|doc-all     1641     0.559  0.535  0.583 struct-LR|behavioural              0.043       0.004       0.083
+interface-length-matched      struct-GBM|doc-all     1641     0.531  0.511  0.551   struct-GBM|semantic              0.029       0.005       0.052
+interface-length-matched        tfidf-LR|doc-all     1641     0.540  0.516  0.565     tfidf-LR|semantic              0.034       0.001       0.072
+interface-length-matched      hybrid-GBM|doc-all     1641     0.509  0.486  0.533   hybrid-GBM|semantic              0.007      -0.024       0.038
+interface-length-matched  struct-LR|doc+code-all     1641     0.563  0.538  0.587 struct-LR|behavioural              0.046       0.011       0.084
+interface-length-matched struct-GBM|doc+code-all     1641     0.520  0.502  0.540   struct-GBM|semantic              0.018      -0.005       0.041
+interface-length-matched   tfidf-LR|doc+code-all     1641     0.538  0.513  0.564     tfidf-LR|semantic              0.032      -0.000       0.066
+interface-length-matched hybrid-GBM|doc+code-all     1641     0.488  0.463  0.513   hybrid-GBM|semantic             -0.014      -0.047       0.017
+interface-length-matched    baseline:shorter-doc     1641     0.629  0.608  0.651                   NaN                NaN         NaN         NaN
+interface-length-matched               heuristic     1641     0.519  0.512  0.527                   NaN                NaN         NaN         NaN
+                     all       struct-LR|doc-all     6890     0.547  0.533  0.558 struct-LR|behavioural             -0.030      -0.049      -0.011
+                     all      struct-GBM|doc-all     6890     0.483  0.472  0.492   struct-GBM|semantic             -0.049      -0.061      -0.036
+                     all        tfidf-LR|doc-all     6890     0.484  0.471  0.497     tfidf-LR|semantic             -0.040      -0.059      -0.023
+                     all      hybrid-GBM|doc-all     6890     0.495  0.483  0.506   hybrid-GBM|semantic             -0.041      -0.057      -0.025
+                     all  struct-LR|doc+code-all     6890     0.566  0.553  0.578 struct-LR|behavioural             -0.011      -0.029       0.007
+                     all struct-GBM|doc+code-all     6890     0.483  0.473  0.493   struct-GBM|semantic             -0.048      -0.061      -0.035
+                     all   tfidf-LR|doc+code-all     6890     0.507  0.492  0.520     tfidf-LR|semantic             -0.017      -0.036      -0.001
+                     all hybrid-GBM|doc+code-all     6890     0.496  0.484  0.507   hybrid-GBM|semantic             -0.040      -0.054      -0.025
+                     all    baseline:shorter-doc     6890     0.723  0.713  0.733                   NaN                NaN         NaN         NaN
+                     all               heuristic     6890     0.506  0.501  0.511                   NaN                NaN         NaN         NaN
+EXIT=0  elapsed=2444s

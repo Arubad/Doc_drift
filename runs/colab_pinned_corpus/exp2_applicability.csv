@@ -1,0 +1,13 @@
+mutation,kind,applicable,attempted,rate
+add_param,surface,20758,20758,1.0
+add_raise,behavioural,17630,20758,0.8493111089700357
+rename_param,surface,17630,20758,0.8493111089700357
+rename_local,benign,16530,20758,0.7963194912804702
+wrap_return,behavioural,16324,20758,0.7863956065131515
+return_to_yield,behavioural,16253,20758,0.7829752384622796
+negate_condition,semantic,14373,20758,0.6924077464110222
+swap_binop,semantic,10081,20758,0.4856440890259177
+change_default,surface,6853,20758,0.3301377782059929
+remove_param,surface,6791,20758,0.32715097793621734
+remove_raise,behavioural,4601,20758,0.22164948453608246
+rewrite_augassign,benign,1576,20758,0.07592253588977743

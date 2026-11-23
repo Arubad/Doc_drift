@@ -1,0 +1,12 @@
+model,length-matched group,pairs,pair_acc
+qwen-1.5b,new longer,823,0.565
+qwen-1.5b,new shorter,398,0.54
+qwen-1.5b,same length,420,0.601
+qwen-1.5b,"spearman(score_old-score_new, len_new-len_old)",1641,0.031
+qwen-7b,new longer,823,0.625
+qwen-7b,new shorter,398,0.523
+qwen-7b,same length,420,0.586
+qwen-7b,"spearman(score_old-score_new, len_new-len_old)",1641,0.053
+length baseline,new longer,823,1.0
+length baseline,new shorter,398,0.0
+length baseline,same length,420,0.5

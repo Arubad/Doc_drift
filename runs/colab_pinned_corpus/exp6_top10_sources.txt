@@ -1,0 +1,209 @@
+### site-packages/bokeh/settings.py:779 3240  score=0.990  cues: 
+def bokehjsdir(self) -> str:
+    ''' The location of the BokehJS source tree.
+
+    .. deprecated:: 3.4.0
+        Use ``bokehjs_path()`` method instead.
+    '''
+    deprecated((3, 4, 0), "bokehjsdir()", "bokehjs_path() method")
+    return str(self.bokehjs_path())
+
+### site-packages/bokeh/util/paths.py:82 3532  score=0.986  cues: 
+def serverdir() -> str:
+    """ Get the location of the server subpackage.
+
+    .. deprecated:: 3.4.0
+        Use ``server_path()`` instead.
+    """
+    deprecated((3, 4, 0), "serverdir()", "server_path()")
+    return str(server_path())
+
+### site-packages/statsmodels/stats/descriptivestats.py:583 6462  score=0.985  cues: 
+def summary(self) -> SimpleTable:
+    """
+    Summary table of the descriptive statistics
+
+    Returns
+    -------
+    SimpleTable
+        A table instance supporting export to text, csv and LaTeX
+    """
+    df = self.frame.astype(object)
+    if df.isnull().any().any():
+        df = df.fillna("")
+    cols = [str(col) for col in df.columns]
+    stubs = [str(idx) for idx in df.index]
+    data = []
+    for _, row in df.iterrows():
+        data.append([v for v in row])
+
+    def _formatter(v):
+        if isinstance(v, str):
+            return v
+        elif v // 1 == v:
+            return str(int(v))
+        return f"{v:0.4g}"
+
+    return SimpleTable(
+        data,
+        header=cols,
+        stubs=stubs,
+        title="Descriptive Statistics",
+        txt_fmt={"data_fmts": {0: "%s", 1: _formatter}},
+        datatypes=[1] * len(data),
+    )
+
+### site-packages/django/forms/widgets.py:588 9175  score=0.982  cues: 
+def format_value(self, value):
+    """Only return the 'value' attribute if value isn't empty."""
+    if value is True or value is False or value is None or value == "":
+        return
+    return str(value)
+
+### site-packages/sqlalchemy/util/langhelpers.py:855 13913  score=0.981  cues: n_doc_params_unmatched=1
+def class_hierarchy(cls):
+    """Return an unordered sequence of all classes related to cls.
+
+    Traverses diamond hierarchies.
+
+    Fibs slightly: subclasses of builtin types are not returned.  Thus
+    class_hierarchy(class A(object)) returns (A, object), not A plus every
+    class systemwide that derives from object.
+
+    """
+
+    hier = {cls}
+    process = list(cls.__mro__)
+    while process:
+        c = process.pop()
+        bases = (_ for _ in c.__bases__ if _ not in hier)
+
+        for b in bases:
+            process.append(b)
+            hier.add(b)
+
+        if c.__module__ == "builtins" or not hasattr(c, "__subclasses__"):
+            continue
+
+        for s in [
+            _
+            for _ in (
+                c.__subclasses__()
+                if not issubclass(c, type)
+                else c.__subclasses__(c)
+            )
+            if _ not in hier
+        ]:
+            process.append(s)
+            hier.add(s)
+    return list(hier)
+
+### site-packages/networkx/utils/random_sequence.py:140 13038  score=0.981  cues: n_sig_params_unmentioned=2, n_code_exceptions_undocumented=1
+def random_weighted_sample(mapping, k, seed=None):
+    """Returns k items without replacement from a weighted sample.
+
+    The input is a dictionary of items with weights as values.
+    """
+    if k > len(mapping):
+        raise ValueError("sample larger than population")
+    sample = set()
+    while len(sample) < k:
+        sample.add(weighted_choice(mapping, seed))
+    return list(sample)
+
+### site-packages/jsonschema/_utils.py:69 5461  score=0.980  cues: n_sig_params_unmentioned=1, n_doc_params_unmatched=1, return_yield_mismatch=1
+def find_additional_properties(instance, schema):
+    """
+    Return the set of additional properties for the given ``instance``.
+
+    Weeds out properties that should have been validated by ``properties`` and
+    / or ``patternProperties``.
+
+    Assumes ``instance`` is dict-like already.
+    """
+    properties = schema.get("properties", {})
+    patterns = "|".join(schema.get("patternProperties", {}))
+    for property in instance:
+        if property not in properties:
+            if patterns and re.search(patterns, property):
+                continue
+            yield property
+
+### site-packages/networkx/readwrite/sparse6.py:150 13112  score=0.980  cues: return_yield_mismatch=1
+def parseData():
+    """Returns stream of pairs b[i], x[i] for sparse6 format."""
+    chunks = iter(data)
+    d = None  # partial data word
+    dLen = 0  # how many unparsed bits are left in d
+
+    while 1:
+        if dLen < 1:
+            try:
+                d = next(chunks)
+            except StopIteration:
+                return
+            dLen = 6
+        dLen -= 1
+        b = (d >> dLen) & 1  # grab top remaining bit
+
+        x = d & ((1 << dLen) - 1)  # partially built up value of x
+        xLen = dLen  # how many bits included so far in x
+        while xLen < k:  # now grab full chunks until we have enough
+            try:
+                d = next(chunks)
+            except StopIteration:
+                return
+            dLen = 6
+            x = (x << 6) + d
+            xLen += 6
+        x = x >> (xLen - k)  # shift back the extra bits
+        dLen = xLen - k
+        yield b, x
+
+### site-packages/numpy/_core/arrayprint.py:1537 9765  score=0.980  cues: 
+def dtype_short_repr(dtype):
+    """
+    Convert a dtype to a short form which evaluates to the same dtype.
+
+    The intent is roughly that the following holds
+
+    >>> from numpy import *
+    >>> dt = np.int64([1, 2]).dtype
+    >>> assert eval(dtype_short_repr(dt)) == dt
+    """
+    if type(dtype).__repr__ != np.dtype.__repr__:
+        # TODO: Custom repr for user DTypes, logic should likely move.
+        return repr(dtype)
+    if dtype.names is not None:
+        # structured dtypes give a list or tuple repr
+        return str(dtype)
+    elif issubclass(dtype.type, flexible):
+        # handle these separately so they don't give garbage like str256
+        return "'%s'" % str(dtype)
+
+    typename = dtype.name
+    if not dtype.isnative:
+        # deal with cases like dtype('<u2') that are identical to an
+        # established dtype (in this case uint16)
+        # except that they have a different endianness.
+        return "'%s'" % str(dtype)
+    # quote typenames which can't be represented as python variable names
+    if typename and not (typename[0].isalpha() and typename.isalnum()):
+        typename = repr(typename)
+    return typename
+
+### site-packages/django/conf/urls/i18n.py:8 7933  score=0.979  cues: n_sig_params_unmentioned=1
+def i18n_patterns(*urls, prefix_default_language=True):
+    """
+    Add the language code prefix to every URL pattern within this function.
+    This may only be used in the root URLconf, not in an included URLconf.
+    """
+    if not settings.USE_I18N:
+        return list(urls)
+    return [
+        URLResolver(
+            LocalePrefixPattern(prefix_default_language=prefix_default_language),
+            list(urls),
+        )
+    ]
+

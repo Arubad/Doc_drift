@@ -5,7 +5,7 @@ longer, shorter, or exactly the same length (in words) as the old one. On same-l
 the length baseline is 0.5 by construction, so accuracy above 0.5 there cannot come from
 length. Cluster bootstrap over commits (B=2000).
 
-Inputs: real_pairs_clean.pkl and exp11 score files (DOCDRIFT_RUNS, default ../runs).
+Inputs: dataset/docfix_pairs.jsonl.gz and exp11 score files (DOCDRIFT_RUNS, default ../runs).
 """
 import os
 
@@ -14,7 +14,8 @@ import pandas as pd
 from scipy.stats import spearmanr
 
 RUNS = os.environ.get("DOCDRIFT_RUNS", os.path.join(os.path.dirname(__file__), "..", "runs"))
-real = pd.read_pickle(os.path.join(RUNS, "real_drift", "real_pairs_clean.pkl")).reset_index(drop=True)
+DATASET = os.path.join(os.path.dirname(__file__), "..", "dataset", "docfix_pairs.jsonl.gz")
+real = pd.read_json(DATASET, lines=True, dtype={"commit": str}).sort_values("pair_id").reset_index(drop=True)
 n = len(real)
 wo, wn = real.doc_old.str.split().str.len(), real.doc_new.str.split().str.len()
 lm = (real.interface & ((wn - wo).abs() <= 0.10 * wo)).values

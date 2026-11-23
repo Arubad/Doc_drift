@@ -1,0 +1,30 @@
+done struct-LR
+done struct-GBM
+done tfidf-LR
+[saved] results/exp7_lomo.csv
+detector         struct-GBM         struct-LR         tfidf-LR        
+protocol               LOMO in-dist      LOMO in-dist     LOMO in-dist
+held_out                                                              
+add_param             0.772   0.888     0.676   0.742    0.763   0.972
+add_raise             0.561   0.833     0.526   0.786    0.714   0.955
+change_default        0.518   0.582     0.570   0.602    0.653   0.682
+negate_condition      0.554   0.598     0.505   0.518    0.655   0.783
+remove_param          0.502   0.526     0.529   0.543    0.644   0.680
+remove_raise          0.583   0.615     0.532   0.550    0.662   0.875
+rename_param          0.643   0.826     0.716   0.775    0.586   0.823
+return_to_yield       0.531   0.986     0.599   0.982    0.648   0.953
+swap_binop            0.516   0.535     0.499   0.508    0.604   0.632
+wrap_return           0.412   0.991     0.363   0.989    0.567   0.809
+
+mean AUROC change in-dist -> LOMO:
+ detector
+struct-GBM   -0.179
+struct-LR    -0.148
+tfidf-LR     -0.167
+Name: auroc, dtype: float64
+detector                       struct-GBM  struct-LR  tfidf-LR
+held_out                                                      
+behavioural->surface                0.550      0.530     0.650
+surface+behavioural->semantic       0.524      0.499     0.628
+surface->behavioural                0.494      0.480     0.640
+[saved] results/exp7_lomo_pivot.csv

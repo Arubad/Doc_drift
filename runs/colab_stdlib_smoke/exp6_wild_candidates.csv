@@ -1,0 +1,41 @@
+file,name,lineno,drift_score,cues
+typing.py,_determine_new_args,1506,0.9124163648630521,"n_sig_params_unmentioned=1, n_doc_params_unmatched=2, n_code_exceptions_undocumented=1"
+types.py,resolve_bases,77,0.9119949575303172,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1"
+importlib/resources/_common.py,_temp_dir,193,0.9101579914962714,n_sig_params_unmentioned=1
+tokenize.py,_generate_tokens_from_c_tokenizer,575,0.9073613452263221,"n_sig_params_unmentioned=2, n_code_exceptions_undocumented=2"
+ast.py,block,799,0.8881625921873827,
+dis.py,findlinestarts,909,0.8876324907958792,
+ast.py,delimit,813,0.8861430798039338,
+dis.py,_find_store_names,945,0.8856373934006107,n_sig_params_unmentioned=1
+subprocess.py,_on_error_fd_closer,1329,0.878635696516333,
+asyncio/unix_events.py,_check_signal,178,0.8765224897727839,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1, n_doc_exceptions_unmatched=1"
+dis.py,_find_imports,923,0.8757554310128882,n_sig_params_unmentioned=1
+difflib.py,restore,2021,0.8741838144766444,n_code_exceptions_undocumented=1
+difflib.py,_qformat,999,0.8740272218365677,n_sig_params_unmentioned=4
+graphlib.py,static_order,235,0.8735707880967539,"n_doc_params_unmatched=1, return_yield_mismatch=1, n_doc_exceptions_unmatched=1"
+pathlib/_local.py,walk,622,0.86385422694445,n_sig_params_unmentioned=3
+_pyio.py,readlines,571,0.8619579849916206,
+_pyio.py,__init__,1038,0.8612256786912363,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=2"
+importlib/metadata/_itertools.py,unique_everseen,4,0.8596612360803243,n_sig_params_unmentioned=2
+multiprocessing/reduction.py,recvfds,153,0.8524048791836386,"n_sig_params_unmentioned=2, n_code_exceptions_undocumented=4"
+difflib.py,compare,833,0.8473806693507863,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1"
+threading.py,release,519,0.8466811022701889,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1, n_doc_numbers_unmatched_defaults=1"
+zipfile/_path/glob.py,restrict_rglob,77,0.8446244691820474,"n_sig_params_unmentioned=1, n_doc_params_unmatched=1"
+http/client.py,endheaders,1370,0.8411959052932766,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1"
+subprocess.py,_check_timeout,1264,0.8407788042175715,"n_sig_params_unmentioned=5, n_code_exceptions_undocumented=1"
+traceback.py,format_exception,142,0.8389139711742083,n_sig_params_unmentioned=4
+multiprocessing/process.py,active_children,43,0.8383041397233919,
+typing.py,_remove_dups_flatten,379,0.8336708064221164,
+email/mime/image.py,__init__,16,0.8310542759054396,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1"
+traceback.py,print_last,214,0.829984824758788,n_code_exceptions_undocumented=1
+mailbox.py,update,164,0.828910481860207,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1"
+pdb.py,_post_mortem,2409,0.8278086810320927,"n_sig_params_unmentioned=2, n_code_exceptions_undocumented=1"
+typing.py,get_overloads,2763,0.8269539809409638,
+concurrent/futures/_base.py,set_result,542,0.8259340264975417,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1"
+warnings.py,_showwarnmsg,97,0.8244938710168109,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1"
+email/message.py,__setitem__,433,0.8241758780970179,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1"
+pathlib/_abc.py,walk,697,0.8238479891845906,n_sig_params_unmentioned=3
+_pyrepl/reader.py,suspend,610,0.8236965658161304,
+bdb.py,clear_bpbynumber,513,0.8218201339987771,
+pickletools.py,read_unicodestringnl,603,0.8206464033952262,"n_sig_params_unmentioned=1, n_code_exceptions_undocumented=1"
+unittest/case.py,subTest,538,0.8196748016782618,"n_sig_params_unmentioned=1, return_yield_mismatch=1, n_code_exceptions_undocumented=1"

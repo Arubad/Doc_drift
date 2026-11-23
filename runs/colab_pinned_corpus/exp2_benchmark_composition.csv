@@ -1,0 +1,14 @@
+kind,mutation,label,n
+behavioural,add_raise,1,8350
+behavioural,remove_raise,1,1915
+behavioural,return_to_yield,1,7783
+behavioural,wrap_return,1,7894
+benign,rename_local,0,15749
+benign,rewrite_augassign,0,824
+clean,none,0,20758
+semantic,negate_condition,1,6661
+semantic,swap_binop,1,4458
+surface,add_param,1,10813
+surface,change_default,1,2636
+surface,remove_param,1,2633
+surface,rename_param,1,8360

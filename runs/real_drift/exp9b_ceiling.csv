@@ -1,0 +1,3 @@
+subset,annotated,label_precision,perfect_detector_pair_acc
+all,150,0.5533333333333333,0.7766666666666666
+interface,80,0.65,0.825
